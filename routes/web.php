@@ -12,12 +12,5 @@
 */
 
 
-Route::get('/', function () {
-    $name=request('name');
-   // return $name;
 
-    return view ('test',[
-        'name'=>$name
-
-    ]);
- });
+  Route::get('posts/{post}', 'PostsController@show');
