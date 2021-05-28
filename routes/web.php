@@ -13,10 +13,18 @@
 
 
 
-  Route::get('/',function(){
-      return view('welcome');
-  });
+    Route::get('/', function ()
+     {
+        return view('welcome');
+     }
+    );
 
-  Route::get('/contact',function(){
-    return view('contact');
-});
+    Route ::get('/about', function ()
+    {
+        return view('about',
+         [
+        'articles' => App\Article ::latest()->get()
+         ]);
+    });
+
+    Route::get('/articles', 'ArticlesController@index');
