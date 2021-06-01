@@ -14,6 +14,7 @@ class ArticlesController extends Controller
     }
     Public function show($id)
     {
+        
         $article = Article::find($id);
 
         return view('articles.show',['article'=>$article]);
@@ -22,32 +23,22 @@ class ArticlesController extends Controller
     public function create()
     {
 
+        return view('articles.create');
 
     }
 
     public function store()
     {
+        $article= new Article();
+        $article->title=request('title');
+        $article->excerpt=request('excerpt');
+        $article->body=request('body');
+        $article->save();
 
-
-    }
-
-    public function edit()
-    {
-
-
-    }
-
-    public function update()
-    {
-
+        return redirect("/articles");
 
     }
 
-    public function destroy()
-    {
-
-
-    }
 
 
 }
