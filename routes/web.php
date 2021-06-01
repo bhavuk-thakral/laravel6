@@ -16,20 +16,18 @@
     Route::get('/', function ()
      {
         return view('welcome');
-     }
-    );
+     });
 
-    Route ::get('/about', function ()
+    Route ::get('/articles', function ()
     {
-        return view('about',
-         [
-        'articles' => App\Article ::latest()->get()
+        return view('articles.index',[
+            'articles' => App\Article::latest()->get()
          ]);
     });
 
     Route::get('/articles', 'ArticlesController@index');
-
-    Route::get('/articles/{article}/create','ArticlesController@create');
+    Route::post('/articles', 'ArticlesController@show');
+    Route::get('/articles/create','ArticlesController@create');
 
 
     Route::get('/articles/{article}','ArticlesController@show');
