@@ -8,6 +8,12 @@ class ArticlesController extends Controller
 {
     public function index()
     {
+        if (request('tag')){
+            $articles= Tag::where('name',request('tag'))->firstorfail()->articles;
+
+            return $articles;
+
+        }
         $articles = Article::latest()->get();
 
         return view('articles.index', ['articles' => $articles]);
