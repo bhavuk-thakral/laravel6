@@ -56,6 +56,20 @@
                 </div>
             </div>
 
+            <div class="field">
+                <label class="label" for="tags">Tags</label>
+                
+                <div class="control">
+                    <select
+                        name="tags[]">
+                        </select>
+                    @error('tags')
+                        <p class="help is-danger">{{$errors->first('tags')}}</p>
+                    @enderror
+                </div>
+            </div>
+
+
             <div class="field is-grouped">
                 
                 <div class="control">
